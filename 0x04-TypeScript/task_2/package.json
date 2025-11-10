@@ -1,0 +1,16 @@
+{
+  "name": "task_2",
+  "version": "1.0.0",
+  "description": "Advanced types part 1",
+  "main": "dist/js/bundle.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "node dist/js/bundle.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
