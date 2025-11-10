@@ -60,7 +60,7 @@ export function executeWork(employee: Director | Teacher): string {
 type Subjects = 'Math' | 'History';
 
 /* teachClass function with typed argument */
-function teachClass(todayClass: Subjects): string {
+function teachClass(todayClass:Subjects): string {
   if (todayClass === 'Math') {
     return 'Teaching Math';
   }
