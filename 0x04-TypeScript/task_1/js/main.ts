@@ -1,33 +1,85 @@
-// Base Teacher interface
+// task_1/js/main.ts
+
+/**************************
+ * 1. Teacher Interface
+ **************************/
 interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
   fullTimeEmployee: boolean;
   location: string;
   yearsOfExperience?: number;
-  [key: string]: any; // Allow dynamic additional properties
+  [key: string]: any; // Allow additional properties dynamically
 }
 
-// Directors interface extending Teacher
+/**************************
+ * 2. Directors Interface
+ **************************/
 interface Directors extends Teacher {
   numberOfReports: number;
 }
 
-// Example Teacher object
-const teacher3: Teacher = {
-  firstName: 'John',
-  lastName: 'Doe',
-  fullTimeEmployee: false,
-  location: 'London',
-  contract: false, // dynamic property
+/**************************
+ * 3. printTeacher Function
+ **************************/
+interface PrintTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
+  return `${firstName.charAt(0)}. ${lastName}`;
 };
 
-console.log('Teacher:', teacher3);
+/**************************
+ * 4. StudentClass
+ **************************/
+interface StudentConstructor {
+  firstName: string;
+  lastName: string;
+}
 
-// Example Directors object
+interface StudentClassInterface {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+class StudentClass implements StudentClassInterface {
+  firstName: string;
+  lastName: string;
+
+  constructor({ firstName, lastName }: StudentConstructor) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return 'Currently working';
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+}
+
+/**************************
+ * Example Usage
+ **************************/
+
+// Teacher
+const teacher1: Teacher = {
+  firstName: 'Alice',
+  lastName: 'Johnson',
+  fullTimeEmployee: true,
+  location: 'New York',
+  contract: true,
+};
+
+console.log('Teacher:', teacher1);
+
+// Directors
 const director1: Directors = {
-  firstName: 'John',
-  lastName: 'Doe',
+  firstName: 'Bob',
+  lastName: 'Smith',
   fullTimeEmployee: true,
   location: 'London',
   numberOfReports: 17,
@@ -35,6 +87,10 @@ const director1: Directors = {
 
 console.log('Directors:', director1);
 
-// Expected output:
-// Teacher: { firstName: 'John', lastName: 'Doe', fullTimeEmployee: false, location: 'London', contract: false }
-// Directors: { firstName: 'John', lastName: 'Doe', fullTimeEmployee: true, location: 'London', numberOfReports: 17 }
+// printTeacher usage
+console.log('printTeacher:', printTeacher('John', 'Doe')); // Output: J. Doe
+
+// StudentClass usage
+const student1 = new StudentClass({ firstName: 'Guillaume', lastName: 'Salva' });
+console.log('Student displayName:', student1.displayName()); // Output: Guillaume
+console.log('Student workOnHomework:', student1.workOnHomework()); // Output: Currently working
