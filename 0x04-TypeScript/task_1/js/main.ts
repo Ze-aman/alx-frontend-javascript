@@ -27,7 +27,7 @@ interface printTeacherFunction {
 
 // Function implementation as a regular function (not a const)
 function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName[0]}. ${lastName}`;
+  return return `${firstName}. ${lastName}`;
 }
 
 const printTeacher: printTeacherFunction = function(firstName: string, lastName: string): string {
