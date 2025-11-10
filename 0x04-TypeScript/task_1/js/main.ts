@@ -1,37 +1,27 @@
-// Interface for the constructor
-interface StudentConstructor {
-  new (firstName: string, lastName: string): StudentClassInterface;
+interface Teacher {
+  readonly firstName: string;
+  readonly lastName: string;
+  fullTimeEmployee: boolean;
+  location: string;
+  yearsOfExperience?: number;
+  [key: string]: any; // Allows additional properties dynamically
 }
 
-// Interface describing the class
-interface StudentClassInterface {
-  firstName: string;
-  lastName: string;
-  workOnHomework(): string;
-  displayName(): string;
-}
+// Example usage:
+const teacher3: Teacher = {
+  firstName: 'John',
+  lastName: 'Doe',
+  fullTimeEmployee: false,
+  location: 'London',
+  contract: false, // Dynamic property
+};
 
-// Class implementation
-class StudentClass implements StudentClassInterface {
-  firstName: string;
-  lastName: string;
+console.log(teacher3);
 
-  constructor(firstName: string, lastName: string) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-
-  workOnHomework(): string {
-    return "Currently working";
-  }
-
-  displayName(): string {
-    return this.firstName;
-  }
-}
-
-// Example usage
-const student1: StudentClassInterface = new StudentClass("John", "Doe");
-
-console.log(student1.displayName());      // John
-console.log(student1.workOnHomework());   // Currently working
+// Output should be:
+// Object
+// contract: false
+// firstName: "John"
+// fullTimeEmployee: false
+// lastName: "Doe"
+// location: "London"
