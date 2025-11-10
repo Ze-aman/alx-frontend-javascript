@@ -15,7 +15,7 @@ interface Teacher {
 /**************************
  * 2. Directors Interface
  **************************/
-interface Directors extends Teacher {
+interface Director extends Teacher {
   numberOfReports: number;
 }
 
