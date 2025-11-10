@@ -20,8 +20,14 @@ interface Directors extends Teacher {
 /**************************
  * 3. printTeacher Function
  **************************/
+// Interface for the function
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
+}
+
+// Function implementation as a regular function (not a const)
+function printTeacher(firstName: string, lastName: string): string {
+  return `${firstName[0]}. ${lastName}`;
 }
 
 const printTeacher: printTeacherFunction = function(firstName: string, lastName: string): string {
