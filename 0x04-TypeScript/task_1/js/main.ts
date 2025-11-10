@@ -1,5 +1,3 @@
-// task_1/js/main.ts
-
 /**************************
  * 1. Teacher Interface
  **************************/
@@ -15,20 +13,23 @@ interface Teacher {
 /**************************
  * 2. Directors Interface
  **************************/
-interface Director extends Teacher {
+interface Directors extends Teacher {
   numberOfReports: number;
 }
 
 /**************************
  * 3. printTeacher Function
  **************************/
-interface PrintTeacherFunction {
+interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
-  return `${firstName.charAt(0)}. ${lastName}`;
+const printTeacher: printTeacherFunction = function(firstName: string, lastName: string): string {
+  return firstName.charAt(0) + '. ' + lastName;
 };
+
+// Example usage of printTeacher
+console.log(printTeacher('John', 'Doe')); // Output: J. Doe
 
 /**************************
  * 4. StudentClass
@@ -62,7 +63,7 @@ class StudentClass implements StudentClassInterface {
 }
 
 /**************************
- * Example Usage
+ * 5. Example Usage
  **************************/
 
 // Teacher
@@ -86,9 +87,6 @@ const director1: Directors = {
 };
 
 console.log('Directors:', director1);
-
-// printTeacher usage
-console.log('printTeacher:', printTeacher('John', 'Doe')); // Output: J. Doe
 
 // StudentClass usage
 const student1 = new StudentClass({ firstName: 'Guillaume', lastName: 'Salva' });
