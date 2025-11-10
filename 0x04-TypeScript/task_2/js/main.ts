@@ -57,12 +57,14 @@ export function executeWork(employee: Director | Teacher): string {
   return employee.workTeacherTasks();
 }
 
-/* String literal type for Subjects */
-export type Subjects = 'Math' | 'History';
+type Subjects = 'Math' | 'History';
 
-/* teachClass function */
-export function teachClass(todayClass: Subjects): string {
-  return todayClass === 'Math' ? 'Teaching Math' : 'Teaching History';
+/* teachClass function with typed argument */
+function teachClass(todayClass: Subjects): string {
+  if (todayClass === 'Math') {
+    return 'Teaching Math';
+  }
+  return 'Teaching History';
 }
 
 /* Example usage */
