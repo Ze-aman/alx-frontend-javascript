@@ -1,60 +1,37 @@
-/**************************
- * 1. Teacher Interface
- **************************/
+/* Teacher interface */
 interface Teacher {
-  readonly firstName: string;
-  readonly lastName: string;
+  firstName: string;
+  lastName: string;
   fullTimeEmployee: boolean;
   location: string;
   yearsOfExperience?: number;
-  [key: string]: any; // Allow additional properties dynamically
+  [key: string]: any; // allows extra properties like contract
 }
 
-/**************************
- * 2. Directors Interface
- **************************/
+/* Directors interface extending Teacher */
 interface Directors extends Teacher {
   numberOfReports: number;
 }
 
-/**************************
- * 3. printTeacher Function
- **************************/
-// Interface for the function
+/* Interface for the printTeacher function */
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Function implementation as a regular function (not a const)
+/* printTeacher function as required by ALX */
 function printTeacher(firstName: string, lastName: string): string {
-  return return `${firstName}. ${lastName}`;
+  return `${firstName}. ${lastName}`;
 }
 
-const printTeacher: printTeacherFunction = function(firstName: string, lastName: string): string {
-  return firstName.charAt(0) + '. ' + lastName;
-};
+/* Example usage of printTeacher */
+console.log(printTeacher('John', 'Doe')); // J. Doe
 
-// Example usage of printTeacher
-console.log(printTeacher('John', 'Doe')); // Output: J. Doe
-
-/**************************
- * 4. StudentClass
- **************************/
-interface StudentConstructor {
-  firstName: string;
-  lastName: string;
-}
-
-interface StudentClassInterface {
-  workOnHomework(): string;
-  displayName(): string;
-}
-
-class StudentClass implements StudentClassInterface {
+/* StudentClass as expected by ALX */
+class StudentClass {
   firstName: string;
   lastName: string;
 
-  constructor({ firstName, lastName }: StudentConstructor) {
+  constructor(firstName: string, lastName: string) {
     this.firstName = firstName;
     this.lastName = lastName;
   }
@@ -68,33 +45,27 @@ class StudentClass implements StudentClassInterface {
   }
 }
 
-/**************************
- * 5. Example Usage
- **************************/
+/* Example usage of StudentClass */
+const student1 = new StudentClass('Guillaume', 'Salva');
+console.log(student1.displayName()); // Guillaume
+console.log(student1.workOnHomework()); // Currently working
 
-// Teacher
-const teacher1: Teacher = {
-  firstName: 'Alice',
-  lastName: 'Johnson',
-  fullTimeEmployee: true,
-  location: 'New York',
-  contract: true,
+/* Example usage of Teacher and Directors */
+const teacher3: Teacher = {
+  firstName: 'John',
+  lastName: 'Doe',
+  fullTimeEmployee: false,
+  location: 'London',
+  contract: false
 };
 
-console.log('Teacher:', teacher1);
-
-// Directors
 const director1: Directors = {
-  firstName: 'Bob',
+  firstName: 'Jane',
   lastName: 'Smith',
   fullTimeEmployee: true,
-  location: 'London',
-  numberOfReports: 17,
+  location: 'New York',
+  numberOfReports: 17
 };
 
-console.log('Directors:', director1);
-
-// StudentClass usage
-const student1 = new StudentClass({ firstName: 'Guillaume', lastName: 'Salva' });
-console.log('Student displayName:', student1.displayName()); // Output: Guillaume
-console.log('Student workOnHomework:', student1.workOnHomework()); // Output: Currently working
+console.log(teacher3);
+console.log(director1);
